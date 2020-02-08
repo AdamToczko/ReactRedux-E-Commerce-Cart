@@ -16,7 +16,10 @@ class App extends React.Component {
       fetch('http://localhost:8000/products')
       .then(res => res.json())
       .then(data => 
-        console.log(data[1].id)
+        this.setState({
+          products: data,
+          filteredProducts: data
+        })
       )
     }
 
