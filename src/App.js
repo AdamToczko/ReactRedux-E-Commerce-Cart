@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Products from './components/Products';
+import Filter from './components/Filter';
 
 
 class App extends React.Component {
@@ -9,8 +10,6 @@ class App extends React.Component {
     products: [],
     filteredProducts: [] 
     };
-
-
 
     componentWillMount() {
       fetch('http://localhost:8000/products')
@@ -30,7 +29,10 @@ class App extends React.Component {
         <hr />
         <div className="row">
           <div className="col-md-8">
-            Filter goes here
+            <Filter size={this.state.size} sort={this.state.sort} 
+            handleChangeSize={this.handleChangeSize} handleChangeSort={this.handleChangeSort}
+            count={this.state.filteredProducts.length} 
+            />
             <hr />
             <Products products={this.state.filteredProducts} handleAddToCart={this.handleAddToCart} />
           </div>
