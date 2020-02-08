@@ -1,26 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Products from './components/Products';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+  state = { 
+    products: [],
+    filteredProducts: [] 
+    };
+
+
+
+    componentWillMount() {
+      fetch('http://localhost:8000/products')
+      .then(res => res.json())
+      .then(data => 
+        console.log(data[1].id)
+      )
+    }
+
+  render() {
+    return (
+      <div className="container">
+        <h1>E-commerce Shopping Cart Application</h1>
+        <hr />
+        <div className="row">
+          <div className="col-md-8">
+            Filter goes here
+            <hr />
+            <Products products={this.state.filteredProducts} handleAddToCart={this.handleAddToCart} />
+          </div>
+          <div className="col-md-4">
+            Basket goes here
+          </div>
+ 
+        </div>
+ 
+      </div>
+    );
+  }
 }
-
 export default App;
