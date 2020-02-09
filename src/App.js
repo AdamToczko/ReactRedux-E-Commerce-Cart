@@ -46,7 +46,14 @@ class App extends React.Component {
         return { cartItems: cartItems };
       });
     };
-
+// need to update this method to remove 1 item not all items under this id 
+    handleRemoveFromCart = (e, product) => {
+      this.setState(state => {
+        const cartItems = state.cartItems.filter(a => a.id !== product.id);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        return { cartItems: cartItems };
+      })
+    }
 
 
     handleChangeSort = (e) => {

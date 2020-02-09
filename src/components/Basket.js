@@ -24,7 +24,7 @@ export default class Basket extends Component {
                             }
                         </ul>
 
-                        <b>Sum: $ {(cartItems.reduce((a, c) => (a + c.price * c.count), 0))}
+                        <b>Sum: $ {(cartItems.reduce((a, c) => (a + c.price * c.count), 0)).toFixed(2)}
                         </b>
                         <button onClick={() => alert('Todo: Implement checkout page.')} className="btn btn-primary">checkout</button>
                     </div>
