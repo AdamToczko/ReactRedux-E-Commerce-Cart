@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Products from './components/Products';
 import Filter from './components/Filter';
+import Basket from './components/Basket';
 
 
 class App extends React.Component {
@@ -65,7 +66,7 @@ class App extends React.Component {
             <Products products={this.state.filteredProducts} handleAddToCart={this.handleAddToCart} />
           </div>
           <div className="col-md-4">
-            Basket goes here
+            <Basket cartItems={this.state.cartItems} handleRemoveFromCart={this.handleRemoveFromCart} />
           </div>
  
         </div>
