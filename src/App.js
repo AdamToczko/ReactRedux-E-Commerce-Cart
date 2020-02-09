@@ -16,6 +16,12 @@ class App extends React.Component {
     };
 
     componentWillMount() {
+
+      if (localStorage.getItem("cartItems")) {
+        this.setState({
+          cartItems: JSON.parse(localStorage.getItem("cartItems"))
+        });
+      }
       fetch('http://localhost:8000/products')
       .then(res => res.json())
       .then(data => 
