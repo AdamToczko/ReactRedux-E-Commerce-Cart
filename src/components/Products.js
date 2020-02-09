@@ -8,7 +8,7 @@ export default class Products extends Component {
             
             <div className="col-md-4" key={product.id}>
                 <div className="thumbnail text-center" >
-                    <a href={`#${product.id}`} onClick={(event)=> this.props.handleAddToCard(event,product)}>
+                    <a href={`#${product.id}`} onClick={(event)=> this.props.handleAddToCart(event,product)}>
                         <img src={`/products/${product.sku}_2.jpg`} alt={product.title} />
                         <p>
                             {product.title}
@@ -17,7 +17,7 @@ export default class Products extends Component {
                     <div>
                         <b>$ {product.price} </b>
                         <button className="btn btn-primary btn-sm"
-                        onClick={(event)=> this.props.handleAddToCard(event,product)}
+                        onClick={(e)=> this.props.handleAddToCart(e,product)}
                         > Add To Cart 
                         </button>
                     </div>

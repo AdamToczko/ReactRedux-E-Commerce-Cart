@@ -26,6 +26,29 @@ class App extends React.Component {
       )
     }
 
+
+    handleAddToCart = (e, product) => {
+      this.setState(state => {
+        const cartItems = state.cartItems;
+        let productAlreadyInCart = false;
+  
+        cartItems.forEach(cp => {
+          if (cp.id === product.id) {
+            cp.count += 1;
+            productAlreadyInCart = true;
+          }
+        });
+  
+        if (!productAlreadyInCart) {
+          cartItems.push({ ...product, count: 1 });
+        }
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        return { cartItems: cartItems };
+      });
+    };
+
+
+
     handleChangeSort = (e) => {
       this.setState({ sort: e.target.value });
       this.listProducts();
