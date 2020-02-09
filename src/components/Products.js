@@ -6,7 +6,7 @@ export default class Products extends Component {
         
         const productItems = this.props.products.map(product =>
             
-            <div className="col-md-4">
+            <div className="col-md-4" key={product.id}>
                 <div className="thumbnail text-center" >
                     <a href={`#${product.id}`} onClick={(event)=> this.props.handleAddToCard(event,product)}>
                         <img src={`/products/${product.sku}_2.jpg`} alt={product.title} />
