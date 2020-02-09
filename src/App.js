@@ -8,8 +8,11 @@ import Basket from './components/Basket';
 class App extends React.Component {
 
   state = { 
+    size: "",
+    sort: "",
+    cartItems: [],
     products: [],
-    filteredProducts: [] 
+    filteredProducts: []
     };
 
     componentWillMount() {
