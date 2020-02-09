@@ -31,6 +31,23 @@ class App extends React.Component {
       this.listProducts();
     }
 
+    listProducts = () => {
+      this.setState(state => {     
+        if (state.sort !== '') {
+           state.products.sort((a, b) =>
+            (state.sort === 'lowest'
+              ? ((a.price > b.price) ? 1 : -1)
+              : ((a.price < b.price) ? 1 : -1)));
+        } else{
+           state.products.sort((a, b)=> (a.id > b.id) ? 1 : -1);
+        } 
+        if (state.size !== '') {
+          return { filteredProducts:state.products.filter(a => a.availableSizes.indexOf(state.size.toUpperCase()) >= 0)}
+        }
+        return { filteredProducts: state.products };
+      })
+    }
+
 
 
   render() {
