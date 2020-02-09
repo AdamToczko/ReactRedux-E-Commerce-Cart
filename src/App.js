@@ -22,6 +22,17 @@ class App extends React.Component {
       )
     }
 
+    handleChangeSort = (e) => {
+      this.setState({ sort: e.target.value });
+      this.listProducts();
+    }
+    handleChangeSize = (e) => {
+      this.setState({ size: e.target.value });
+      this.listProducts();
+    }
+
+
+
   render() {
     return (
       <div className="container">
